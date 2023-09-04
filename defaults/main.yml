@@ -8,9 +8,10 @@ syslog_ng_config_options:
   flush_lines: 0
   use_dns: 'no'
   use_fqdn: 'no'
+  dns_cache: 'no'
   owner: '"{{syslog_ng_user}}"'
   group: '"{{syslog_ng_group}}"'
-  perm: 0640
+  perm: '0640'
   stats_freq: 0
   bad_hostname: '"^gconfd$"'
   create_dirs: 'yes'
