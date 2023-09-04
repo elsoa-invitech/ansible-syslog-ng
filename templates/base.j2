@@ -3,4 +3,7 @@
 
 {% include syslog_ng_mode + "/statements.j2" %}
 
+###
+# Include all config files
+###
 {{ macros.add_includes(syslog_ng_config_post_includes) }}
