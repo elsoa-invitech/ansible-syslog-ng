@@ -1,5 +1,6 @@
 ---
 syslog_ng_mode: local
+syslog_ng_mode_template: "dummy"
 syslog_ng_group: root
 syslog_ng_user: root
 
