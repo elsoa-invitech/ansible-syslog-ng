@@ -23,16 +23,20 @@ ip({{hostname}}),
 {% if options.proto != "tls" %}
   {{options.proto}}(
     {{ get_hostname_parameter(hostname, type) }}
+    {% if options.extra|default([])|length >= 1 -%}
     {% for extra_item in options.extra.items() -%}
     {{ extra_item[0] }}({{ extra_item[1] }}),
     {% endfor -%}
+    {% endif -%}
     port({{options.port|default(514)}})
 {% else %}
   {{options.proto}}(
     {{ get_hostname_parameter(hostname, type) }}
+    {% if options.extra|default([])|length >= 1 -%}
     {% for extra_item in options.extra.items() -%}
     {{ extra_item[0] }}({{ extra_item[1] }}),
     {% endfor -%}
+    {% endif -%}
     port({{options.port|default(514)}}),
     tls(
       ca_dir({{options.ca_dir}})
