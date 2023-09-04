@@ -8,7 +8,7 @@
 
 # First, set some global options.
 options {
-{% for k, v in  syslog_ng_config_options.iteritems() %}
+{% for k, v in  syslog_ng_config_options.items() %}
     {{ k }}({{ v  }});
 {% endfor %}
 };

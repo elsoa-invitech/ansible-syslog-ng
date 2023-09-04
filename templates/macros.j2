@@ -17,20 +17,20 @@ ip({{hostname}}),
 {# A general macro which generates source or destination statements from dictionaries #}
 {% macro generate_statements(statements, type) -%}
 {% for item in statements %}
-{% set hostname = item.keys()[0] %}
+{% set hostname = item.keys()|first %}
 {% set options = item[hostname] %}
 {{type}} {{ generate_statement_name(hostname, type, options.proto) }} {
 {% if options.proto != "tls" %}
   {{options.proto}}(
     {{ get_hostname_parameter(hostname, type) }}
-    {% for extra_item in options.extra.iteritems() -%}
+    {% for extra_item in options.extra.items() -%}
     {{ extra_item[0] }}({{ extra_item[1] }}),
     {% endfor -%}
     port({{options.port|default(514)}})
 {% else %}
   {{options.proto}}(
     {{ get_hostname_parameter(hostname, type) }}
-    {% for extra_item in options.extra.iteritems() -%}
+    {% for extra_item in options.extra.items() -%}
     {{ extra_item[0] }}({{ extra_item[1] }}),
     {% endfor -%}
     port({{options.port|default(514)}}),
@@ -68,7 +68,7 @@ ip({{hostname}}),
 {# Generate log statements #}
 {% macro generate_logpaths(statements, type) -%}
 {% for item in statements %}
-{% set hostname = item.keys()[0] %}
+{% set hostname = item.keys()|first %}
 {% set options = item[hostname] %}
 log {
 {% if type == "destination" %}
