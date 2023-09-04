@@ -9,8 +9,8 @@ source s_src {
        internal();
 };
 
-{% include "common/syslog-ng/" + syslog_ng_config_version + "/filters.j2" %}
-
 {% include "local/syslog-ng/" + syslog_ng_config_version + "/destinations.j2" %}
+
+{% include "common/syslog-ng/" + syslog_ng_config_version + "/filters.j2" %}
 
 {% include "local/syslog-ng/" + syslog_ng_config_version + "/logpaths.j2" %}

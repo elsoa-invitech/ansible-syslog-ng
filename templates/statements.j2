@@ -1,5 +1,4 @@
 {% import "macros.j2" as macros with context %}
-{% include "filters.j2" %}
 
 {% block mode_header %}
 destination d_local {
@@ -12,5 +11,6 @@ destination d_local {
 {{ macros.generate_sources(syslog_ng_server_sources) }}
 {% endblock %}
 
+{% include "filters.j2" %}
 
 
