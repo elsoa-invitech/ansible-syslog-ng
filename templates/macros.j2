@@ -77,7 +77,7 @@ log {
   destination({{ generate_statement_name(hostname, type, options.proto) }});
 {% else %}
   source({{ generate_statement_name(hostname, type, options.proto) }});
-  {{ generate_filters_in_logpath(options.filters|default([])) }}
+  {{ generate_filters_in_logpath(options) }}
   destination(d_local);
 {% endif %}
 };
